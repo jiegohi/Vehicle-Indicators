@@ -32,7 +32,7 @@ category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABE
 
 
 
-model_name = 'ssdlite_mobilenet_v2_coco_2018_05_09'
+model_name = 'ssd_inception_v2_coco_2018_01_28'
 model_dir =  "../bigdata/models/" + model_name + "/saved_model"
 detection_model = tf.saved_model.load(str(model_dir))
 detection_model = detection_model.signatures['serving_default']
@@ -130,7 +130,7 @@ def show_inference(dashPointer , lanePointer , frame):
     image_np , crash_count_frames = estimate_collide_utils.estimate_collide(indexesCars , boxesCars , image_np , crash_count_frames)
     image_np , flagPerson , areaPerson , areaDetails = estimate_stepping_utils.estimate_stepping(indexesPersons , boxesPersons , image_np, flagPerson , areaPerson , areaDetails)
 
-    cv2.putText(image_np,"DAY",(width - 200 ,50), font, 2, (167,133,0) , 2 , cv2.LINE_AA)
+    cv2.putText(image_np,"DAY",(50 ,90), font, 2, (167,133,0) , 2 , cv2.LINE_AA)
 
     image_np = lane_detection_utils.draw_lines(lanePointer , lane_image , image_np)
     # lane_detection_utils.all_lines(lanePointer , lane_image , image_np)
